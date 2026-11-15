@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <radialGradient id="shade"><stop stop-color="#1a1c21"/><stop offset=".75" stop-color="#090a0d"/><stop offset="1" stop-color="#030405"/></radialGradient>
+ <linearGradient id="metal"><stop stop-color="#343941"/><stop offset=".24" stop-color="#edf3f8"/><stop offset=".45" stop-color="#7a8490"/><stop offset=".65" stop-color="#f4f8fc"/><stop offset="1" stop-color="#424750"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".4" numOctaves="3" seed="14" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".10"/></feComponentTransfer></filter>
+ <pattern id="damask" width="265" height="310" patternUnits="userSpaceOnUse"><g fill="none" stroke="#aab0bb" stroke-opacity=".12" stroke-width="1.25"><path d="M132 10C80 53 83 94 123 122C35 102 10 172 81 202C108 211 120 232 132 277C144 232 156 211 183 202C254 172 229 102 141 122C181 94 184 53 132 10Z"/><path d="M132 36C99 64 111 93 132 103C153 93 165 64 132 36ZM132 139C84 125 63 165 101 185C125 196 126 215 132 234C138 215 139 196 163 185C201 165 180 125 132 139Z"/><path d="M1 143Q65 98 80 39Q105 105 57 138Q31 151 12 193M264 143Q199 98 184 39Q159 105 207 138Q233 151 252 193"/><path d="M132 0V42M132 268V310"/></g><circle cx="132" cy="145" r="4" fill="#aeb7c5" opacity=".16"/></pattern>
+ <g id="filigree" fill="none" stroke="url(#metal)" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke-width="2.3" d="M16 190V72Q16 16 72 16H190M17 172C28 121 41 80 67 70C92 62 105 74 102 92C98 109 73 102 78 86C82 77 91 79 90 85M18 142C40 132 55 115 55 92C55 56 85 39 117 49C146 59 148 87 132 95C120 101 112 95 115 86M22 195C50 158 64 151 103 147C137 142 159 119 154 93C152 80 144 71 132 72"/>
+  <path stroke-width=".9" d="M27 115Q31 46 100 28M39 137Q62 115 96 119Q135 120 136 86M61 70Q73 47 105 59M73 143Q84 166 115 167M33 79L43 70L50 80L40 89Z"/>
+  <path stroke-width="1.4" d="M16 16L35 5L25 26L8 36ZM70 16L79 5L87 16L79 27ZM16 70L5 79L16 87L27 79Z"/>
+ </g>
+ <g id="star" fill="url(#metal)"><path d="M0 -35L7 -7L35 0L7 7L0 35L-7 7L-35 0L-7 -7Z"/><circle r="4" fill="#f2f7ff"/></g>
+</defs>
+<rect width="1600" height="900" fill="url(#shade)"/><rect width="1600" height="900" fill="url(#damask)"/><rect width="1600" height="900" filter="url(#grain)" opacity=".65"/>
+<g opacity=".78" stroke="#b9c2cd" fill="none"><rect x="27" y="27" width="1546" height="846" stroke-opacity=".38"/><rect x="37" y="37" width="1526" height="826" stroke-opacity=".12"/><path d="M0 450H140M1460 450H1600" stroke-opacity=".28"/></g>
+<use href="#filigree" transform="translate(26 26)" opacity=".72"/><use href="#filigree" transform="translate(1574 26) scale(-1 1)" opacity=".72"/><use href="#filigree" transform="translate(26 874) scale(1 -1)" opacity=".72"/><use href="#filigree" transform="translate(1574 874) scale(-1 -1)" opacity=".72"/>
+<use href="#star" transform="translate(800 39) scale(.65)" opacity=".8"/><use href="#star" transform="translate(800 861) scale(.65)" opacity=".8"/><use href="#star" transform="translate(40 450) scale(.6)" opacity=".6"/><use href="#star" transform="translate(1560 450) scale(.6)" opacity=".6"/>
+<g opacity=".22" fill="none" stroke="url(#metal)" stroke-width="3"><path d="M590 180A240 240 0 1 0 1010 500A248 248 0 0 1 590 180Z" transform="translate(80 -4)"/><path d="M580 187A229 229 0 1 0 1000 499" stroke-width=".8"/></g>
+<g opacity=".28" stroke="url(#metal)" fill="none" stroke-width="1.4" transform="translate(260 370) rotate(-35)"><path d="M0 260C60 180 110 120 145 0M67 171C7 155 8 90 57 66C110 99 99 137 67 171ZM96 103C126 49 182 43 200 5C147 -9 103 35 96 103ZM35 207C-27 210-40 258-20 290C35 276 52 245 35 207Z"/></g>
+<g opacity=".25" stroke="url(#metal)" fill="none" stroke-width="1.4" transform="translate(1340 600) scale(-1 1) rotate(-25)"><path d="M0 260C60 180 110 120 145 0M67 171C7 155 8 90 57 66C110 99 99 137 67 171ZM96 103C126 49 182 43 200 5C147 -9 103 35 96 103ZM35 207C-27 210-40 258-20 290C35 276 52 245 35 207Z"/></g>
+</svg>
