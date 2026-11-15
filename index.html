@@ -174,7 +174,32 @@ h1.display{display:none!important}
 </style>
 </head>
 <body>
-<div class="lock" id="lock"><div class="lock-inner"><form id="lockForm"><input id="entryCode" type="password" placeholder="Password" aria-label="Access password" autocomplete="off"><button class="primarybtn" type="submit">ENTER →</button></form><p id="lockError" aria-live="polite"></p></div></div>
+<div class="lock" id="lock"><div class="lock-inner"><form id="lockForm" onsubmit="return window.enterLucanArchive(event)"><input id="entryCode" type="password" placeholder="Password" aria-label="Access password" autocomplete="off"><button class="primarybtn" type="submit">ENTER →</button></form><p id="lockError" aria-live="polite"></p></div></div>
+<script>
+/* Independent entry controller: works even if the rest of the site has a startup issue. */
+window.enterLucanArchive = function(event) {
+  if (event) event.preventDefault();
+  var field = document.getElementById('entryCode');
+  var message = document.getElementById('lockError');
+  if ((field.value || '').trim().toLowerCase() !== 'moonlight') {
+    message.textContent = 'Incorrect password.';
+    return false;
+  }
+  message.textContent = '';
+  var gate = document.getElementById('lock');
+  gate.classList.add('hidden');
+  gate.style.setProperty('display','none','important');
+  try { sessionStorage.setItem('lt-demo-unlocked', 'yes'); } catch(e) {}
+  return false;
+};
+try {
+  if (sessionStorage.getItem('lt-demo-unlocked') === 'yes') {
+    var gate = document.getElementById('lock');
+    gate.classList.add('hidden');
+    gate.style.setProperty('display','none','important');
+  }
+} catch(e) {}
+</script>
 <header class="site-header" id="siteHeader"><button class="nav-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button><nav class="nav" id="navigation"><a href="#home" data-nav="home">Home</a><a href="#characters" data-nav="characters">Characters</a><a class="outer" href="https://www.tiktok.com/@sit.knee1" target="_blank" rel="noopener noreferrer">TikTok ↗</a></nav></header>
 <main id="app"></main>
 <footer class="foot" id="footer"><button id="studioOpen">Studio</button></footer>
@@ -246,7 +271,7 @@ function bindStudio(){if(studioTab==='appearance'){const save=async()=>{data.app
 if(studioTab==='characters'){const c=getCharacter(characterEditorId);$$('[data-edit-character]').forEach(b=>b.onclick=()=>{characterEditorId=b.dataset.editCharacter;renderStudio()});$$('[data-format]').forEach(b=>b.onclick=()=>{document.execCommand(b.dataset.format,false,b.dataset.formatValue||null);$('#cBio').focus()});const save=async(mode)=>{const edit=characterForm({...c,...data.drafts.characters[c.id]});if(mode==='draft'){data.drafts.characters[c.id]=edit}else{Object.assign(c,edit);c.published=mode==='publish';delete data.drafts.characters[c.id]}await persist();renderStudio()};$('#saveCharacter').onclick=()=>save('draft');$('#publishCharacter').onclick=()=>save('publish');$('#unpublishCharacter').onclick=()=>save('unpublish');$('#previewCharacter').onclick=async()=>{await save('draft');window.previewDraft=true;activeTab='bio';closeStudio();location.hash='#character/'+c.id;render()}}
 if(studioTab==='backup'){$('#exportBackup').onclick=()=>{const blob=new Blob([JSON.stringify(data)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='lucan-thorne-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)};$('#importBackupBtn').onclick=async()=>{const file=$('#importBackup').files[0];if(!file)return alert('Choose a backup JSON first.');if(!confirm('Replace all local content with the backup?'))return;try{const x=JSON.parse(await file.text());if(!Array.isArray(x.characters)||!Array.isArray(x.photos))throw Error('Missing characters/photos arrays');data=x;await persist();alert('Backup imported.');renderStudio();render()}catch(e){alert('Could not import backup: '+e.message)}}}}
 function routeChange(){window.previewDraft=false;activeTab='bio';render();applyAppearance();window.scrollTo(0,0)}
-async function init(){try{await dbOpen();const old=await dbGet();if(old?.characters&&old?.photos)data=old}catch(e){console.warn('IndexedDB is unavailable; changes may not persist.',e)}if($('#year'))$('#year').textContent=new Date().getFullYear();$('#lockForm').onsubmit=e=>{e.preventDefault();if($('#entryCode').value.trim().toLowerCase()==='moonlight'){sessionStorage.setItem('lt-demo-unlocked','yes');$('#lock').classList.add('hidden')}else $('#lockError').textContent='Incorrect phrase.'};if(sessionStorage.getItem('lt-demo-unlocked')==='yes')$('#lock').classList.add('hidden');$('#mobileToggle').onclick=()=>$('#navigation').classList.toggle('open');$('#studioOpen').onclick=openStudio;$('#studioClose').onclick=closeStudio;$$('#studioNav button').forEach(b=>b.onclick=()=>{studioTab=b.dataset.studio;renderStudio()});window.addEventListener('hashchange',routeChange);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});render();applyAppearance()}
+async function init(){try{await dbOpen();const old=await dbGet();if(old?.characters&&old?.photos)data=old}catch(e){console.warn('IndexedDB is unavailable; changes may not persist.',e)}if($('#year'))$('#year').textContent=new Date().getFullYear();/* Entry form is initialized separately, before asynchronous content loading. */$('#mobileToggle').onclick=()=>$('#navigation').classList.toggle('open');$('#studioOpen').onclick=openStudio;$('#studioClose').onclick=closeStudio;$$('#studioNav button').forEach(b=>b.onclick=()=>{studioTab=b.dataset.studio;renderStudio()});window.addEventListener('hashchange',routeChange);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});render();applyAppearance()}
 init();
 </script>
 </body></html>
