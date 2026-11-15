@@ -80,10 +80,48 @@ body{background:radial-gradient(ellipse at 50% -15%,#303b48 0%,transparent 60%),
 .primarybtn{background:linear-gradient(135deg,#f0f4f8,#aab8c8);color:#11151b;border-color:#d9e3f0}.primarybtn:hover{background:#f3f6f9}
 .studio{background:#0e1218}.studio-top{background:#19212b}.admin-box{background:#1a222d;border-color:#526071}
 @media(max-width:700px){.nav{background:#101720}.lock-inner{padding:28px 16px}}
+
+/* Graphic-led gothic entrance: only password input and CTA. */
+.lock{
+ background-color:#07080a;
+ background-image:linear-gradient(90deg,#02030466,#080a0b11 45%,#02030466),url('assets/gothic-silver-wallpaper.svg');
+ background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.lock-inner{
+ width:min(530px,calc(100vw - 48px));
+ border:0;background:none;box-shadow:none;padding:0;
+ text-align:center;
+}
+.lock-inner:before,.lock-inner:after{display:none}
+#lockForm{display:flex;flex-direction:column;gap:17px;width:100%;margin:auto}
+.lock input{
+ margin:0;width:100%;height:58px;
+ background:linear-gradient(180deg,#050608ed,#151920ed);color:#e8eff7;
+ border:1px solid #c4ccd5;outline:1px solid #43505d;outline-offset:4px;
+ box-shadow:inset 0 0 20px #000c,0 0 25px #d6e0eb25;
+ font:400 17px 'Crimson Pro',Georgia,serif;
+ letter-spacing:.16em;caret-color:#fff;
+}
+.lock input::placeholder{color:#b6bdc8;opacity:.9}
+.lock input:focus{border-color:#f1f5fa;outline-color:#849aac}
+.lock .primarybtn{
+ width:100%;min-height:54px;
+ border:1px solid #e7edf6;outline:1px solid #68798b;outline-offset:3px;
+ background:linear-gradient(110deg,#697483,#e7edf6 22%,#8c98a9 44%,#f6f8fc 56%,#737e8c 85%,#d5dce7);
+ color:#11151c;
+ font:600 15px 'Cinzel',Georgia,serif;
+ letter-spacing:.29em;
+ box-shadow:inset 0 1px 2px #fff,0 10px 30px #000a,0 0 18px #b7c6d340;
+ transition:filter .2s,transform .2s;
+}
+.lock .primarybtn:hover{filter:brightness(1.17);transform:translateY(-1px)}
+#lockError{min-height:20px;color:#e3bec5;font-size:12px;margin:16px 0 0;text-shadow:0 1px 3px #000}
+body{background-image:linear-gradient(#080a0dd9,#080a0df2),url('assets/gothic-silver-wallpaper.svg');background-position:center;background-size:cover;background-attachment:fixed}
+@media(max-width:700px){.lock{background-size:auto 100%;background-position:center}.lock-inner{width:min(460px,calc(100vw - 64px))}.lock input{height:54px}}
 </style>
 </head>
 <body>
-<div class="lock" id="lock"><div class="lock-inner"><div class="lock-ornament">L.</div><div class="eyebrow">A PRIVATE COLLECTION</div><h1>Lucan Thorne</h1><p>Virtual photography & character archives.<br>Enter the gallery.</p><form id="lockForm"><input id="entryCode" type="password" placeholder="Enter access phrase" aria-label="Access phrase" autocomplete="off"><button class="primarybtn" style="width:100%">Enter archive →</button></form><p id="lockError" style="color:#dfa9a9"></p><small>Prototype entry phrase: <b>moonlight</b><br>This preview lock is not real website security.</small></div></div>
+<div class="lock" id="lock"><div class="lock-inner"><form id="lockForm"><input id="entryCode" type="password" placeholder="Password" aria-label="Access password" autocomplete="off"><button class="primarybtn" type="submit">ENTER →</button></form><p id="lockError" aria-live="polite"></p></div></div>
 <header class="site-header" id="siteHeader"><a class="brand" href="#home"><span class="brand-mark">L</span>LUCAN THORNE</a><button class="nav-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button><nav class="nav" id="navigation"><a href="#home" data-nav="home">Home</a><a href="#characters" data-nav="characters">Characters</a><a class="outer" href="https://www.tiktok.com/@sit.knee1" target="_blank" rel="noopener noreferrer">TikTok ↗</a></nav></header>
 <main id="app"></main>
 <footer class="foot" id="footer"><span>© <span id="year"></span> Lucan Thorne · An archive of imagined worlds</span><span>Virtual photography & original characters</span><button id="studioOpen">Studio preview ↗</button></footer>
