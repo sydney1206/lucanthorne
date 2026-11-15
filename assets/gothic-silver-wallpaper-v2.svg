@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <radialGradient id="bg"><stop stop-color="#161719"/><stop offset=".62" stop-color="#08090a"/><stop offset="1" stop-color="#020304"/></radialGradient>
+ <radialGradient id="lily" cx=".24" cy=".18" r=".9"><stop stop-color="#9ca0a3"/><stop offset=".18" stop-color="#5e6064"/><stop offset=".45" stop-color="#26282c"/><stop offset=".78" stop-color="#0e1013"/><stop offset="1" stop-color="#050607"/></radialGradient>
+ <linearGradient id="chrome" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#31343b"/><stop offset=".12" stop-color="#cbd1d7"/><stop offset=".19" stop-color="#4b4d52"/><stop offset=".28" stop-color="#f3f5f6"/><stop offset=".37" stop-color="#55575a"/><stop offset=".57" stop-color="#999fa6"/><stop offset=".69" stop-color="#e4e8eb"/><stop offset=".77" stop-color="#272a2e"/><stop offset="1" stop-color="#c9ccd1"/></linearGradient>
+ <linearGradient id="petalshine" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#d0d3d6" stop-opacity=".47"/><stop offset=".36" stop-color="#9ca2a6" stop-opacity=".18"/><stop offset="1" stop-color="#040507" stop-opacity=".02"/></linearGradient>
+ <radialGradient id="moon"><stop stop-color="#a4a7a7"/><stop offset=".35" stop-color="#595b5f"/><stop offset=".78" stop-color="#303337"/><stop offset="1" stop-color="#080a0d"/></radialGradient>
+ <filter id="noise" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".4" numOctaves="4" seed="17" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".19"/></feComponentTransfer></filter>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="4" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9"/></filter>
+ <filter id="smoke"><feGaussianBlur stdDeviation="19"/></filter>
+ <filter id="shine"><feGaussianBlur stdDeviation="2"/></filter>
+ <mask id="cutmoon"><rect width="1600" height="900" fill="white"/><circle cx="927" cy="292" r="200" fill="black"/></mask>
+ <g id="petal"><path d="M0 0C-75-85-110-192-58-275C2-321 97-280 105-214C112-121 58-38 0 0Z" fill="url(#lily)" stroke="#5d6167" stroke-opacity=".45" stroke-width="2"/><path d="M0-10C-37-89-55-177-29-252C-7-279 38-269 54-235C64-170 25-73 0-10Z" fill="url(#petalshine)" opacity=".6"/><path d="M0-9Q-2-132-15-264" fill="none" stroke="#aeb1b2" stroke-width="1" opacity=".22"/><path d="M-8-77L-37-126M-7-131L22-185M-13-175L-38-210M-9-222L22-248" fill="none" stroke="#c0c2c2" stroke-opacity=".14"/></g>
+ <g id="flower">
+  <g opacity=".8"><use href="#petal" transform="rotate(-85)"/><use href="#petal" transform="rotate(-45)"/><use href="#petal" transform="rotate(-7)"/><use href="#petal" transform="rotate(30)"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(122)"/></g>
+  <ellipse rx="30" ry="20" fill="#0a0b0c"/><g stroke="url(#chrome)" stroke-width="1.3" fill="none" opacity=".72"><path d="M-13 7Q-52-55-38-82M-5 4Q-18-69 2-107M7 4Q21-72 36-94M17 9Q57-44 67-50"/><circle cx="-38" cy="-82" r="3"/><circle cx="2" cy="-107" r="3"/><circle cx="36" cy="-94" r="3"/><circle cx="67" cy="-50" r="3"/></g>
+ </g>
+ <g id="corner" fill="none" stroke="url(#chrome)" stroke-linejoin="round">
+  <path stroke-width="2.5" d="M5 188V72Q5 5 72 5H188M5 142C20 66 58 32 108 35C160 36 160 95 125 110C87 123 77 93 96 82C116 71 129 94 114 105M11 164C48 113 68 124 85 137C104 158 76 184 60 169C49 158 57 144 68 149M40 16C72 49 70 79 44 100C20 110 24 133 32 141M143 6C96 21 90 52 114 69C145 86 167 55 148 43C134 34 123 50 132 58"/>
+  <path stroke-width="1" d="M6 50C45 55 73 69 78 107M69 7C52 40 63 55 81 64M6 95Q39 102 52 78M6 120Q37 123 51 143M19 183Q53 180 64 152M117 7Q110 30 87 47M165 7Q163 23 144 27"/>
+  <path stroke-width="1.3" d="M5 5L36-4L19 21L-4 37ZM5 65L-6 75L5 86L16 75ZM65 5L74-6L86 5L74 16Z"/>
+ </g>
+ <g id="star" fill="url(#chrome)"><path d="M0-30L6-6L30 0L6 6L0 30L-6 6L-30 0L-6-6Z"/><circle r="4" fill="#eef1f3"/></g>
+ <g id="vine" fill="none" stroke="#72767c" stroke-width="2" stroke-opacity=".45"><path d="M0 0Q38-86 90-120Q152-165 156-252Q162-299 194-332"/><path d="M65-105Q12-115 17-164Q63-153 65-105ZM102-141Q162-116 174-175Q130-193 102-141ZM139-208Q96-236 115-288Q156-262 139-208ZM175-280Q229-269 232-320Q200-329 175-280Z" fill="#151719"/><path d="M60-108L24-158M106-144L170-170M140-214L120-279M178-283L227-315" stroke-width=".65"/></g>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" filter="url(#noise)" opacity=".83"/>
+<g opacity=".6"><path d="M-70 450Q430 85 830 280Q1190 360 1630 110" stroke="#9da0a5" stroke-width="45" fill="none" opacity=".055" filter="url(#smoke)"/><path d="M-40 600Q620 270 960 520Q1360 670 1710 380" stroke="#e0e3e5" stroke-width="65" fill="none" opacity=".07" filter="url(#smoke)"/></g>
+<!-- Distressed moon surface, behind live controls -->
+<circle cx="777" cy="310" r="191" fill="url(#moon)" opacity=".31" mask="url(#cutmoon)"/>
+<path d="M622 219A205 205 0 1 0 940 494A188 188 0 0 1 622 219Z" fill="url(#moon)" opacity=".42" filter="url(#rough)"/>
+<path d="M622 219A205 205 0 1 0 940 494A188 188 0 0 1 622 219Z" fill="none" stroke="#c4c8c9" stroke-opacity=".31" stroke-width="2"/>
+<g opacity=".27" fill="#0e1012"><circle cx="642" cy="415" r="22"/><circle cx="717" cy="458" r="14"/><circle cx="584" cy="316" r="18"/><circle cx="643" cy="355" r="9"/></g>
+<!-- botanical corners -->
+<use href="#vine" transform="translate(43 540) rotate(-17) scale(1.7)"/>
+<use href="#vine" transform="translate(1605 680) rotate(150) scale(1.9)"/>
+<use href="#flower" transform="translate(308 193) rotate(-16) scale(.81)"/>
+<use href="#flower" transform="translate(1321 781) rotate(175) scale(.84)"/>
+<use href="#flower" transform="translate(141 365) rotate(-53) scale(.33)" opacity=".57"/>
+<use href="#flower" transform="translate(1515 560) rotate(35) scale(.41)" opacity=".52"/>
+<!-- low contrast vintage filigree frame -->
+<rect x="27" y="27" width="1546" height="846" fill="none" stroke="#9fa5ad" stroke-opacity=".47" stroke-width="1.2"/>
+<rect x="37" y="37" width="1526" height="826" fill="none" stroke="#9fa5ad" stroke-opacity=".17"/>
+<use href="#corner" transform="translate(27 27) scale(1.25)" opacity=".8"/>
+<use href="#corner" transform="translate(1573 27) scale(-1.25 1.25)" opacity=".8"/>
+<use href="#corner" transform="translate(27 873) scale(1.25 -1.25)" opacity=".8"/>
+<use href="#corner" transform="translate(1573 873) scale(-1.25 -1.25)" opacity=".8"/>
+<use href="#star" transform="translate(800 27) scale(.72)" opacity=".88"/>
+<use href="#star" transform="translate(800 873) scale(.72)" opacity=".88"/>
+<use href="#star" transform="translate(27 450) scale(.62)" opacity=".88"/>
+<use href="#star" transform="translate(1573 450) scale(.62)" opacity=".88"/>
+</svg>
